@@ -1,0 +1,57 @@
+﻿@model IEnumerable<HD.Models.Topic>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<h1>TOPIC</h1>
+
+<button style="border-radius: 15px; background-color: black;">
+    <a asp-action="Create" style="color: white">Create New</a>
+</button>
+<table id="customers">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CloseDate_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CloseDate_2)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CloseDate_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CloseDate_2)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        Edit
+                        <i class="fa-solid fa-pen-to-square fa-beat" style="color: #dcbf04;"></i>
+                    </a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        Details
+                        <i class="fa-regular fa-circle-info fa-spin" style="color: #3378c1;"></i>
+                    </a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        Delete
+                        <i class="fa-solid fa-delete-left fa-shake" style="color: #cf0202;"></i>
+                    </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
